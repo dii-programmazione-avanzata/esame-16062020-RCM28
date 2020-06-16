@@ -95,7 +95,7 @@ void DegreeCourse::NoOverlapController(const DegreeCourse &degree, int year) con
                 for (int k = 0; k < courseoftheyear.size(); k++)
                     for (int l = 0; l < courses_[courseoftheyear[k]].getLessonsCounter(); l++)
                     assert(this->courses_[i].getLessons()[j].getDate() !=
-                    this->courses_[courseoftheyear[k]].getLessons()[l].getDate() &&
+                    this->courses_[courseoftheyear[k]].getLessons()[l].getDate() ||
                     this->courses_[i].getLessons()[j].getStart() !=
                     this->courses_[courseoftheyear[k]].getLessons()[l].getStart());
             }
