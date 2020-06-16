@@ -15,29 +15,63 @@
 using namespace std;
 
 string Date::printDate() const {
-    return std::string();
+
+    stringstream stream;
+    stream << day_ << '/' << month_ << '/' << year_ ;
+    return stream.str();
+
 }
 
 string Hour::printHour() const {
-    return std::string();
+
+    stringstream stream;
+    stream << hour_ << ':' << minutes_;
+    return stream.str();
+
 }
 
-Professor *Course::addProfessors(const Professor &professor) {
-    return nullptr;
+void Course::addProfessors(const Professor &professor) {
+
+    auto* addProfessor = new Professor[professorsCounter_];
+    for (int i = 0; i < professorsCounter_; i++)
+        addProfessor[i] = professors_[i];
+    addProfessor[professorsCounter_ - 1] = professor;
+    delete[] professors_;
+    professors_ = addProfessor;
+    professorsCounter_ ++;
+
 }
 
-Student *Course::addStudents(const Student &student) {
-    return nullptr;
+void Course::addStudents(const Student &student) {
+
+    auto* addStudent = new Student[studentsCounter_];
+    for (int i = 0; i < studentsCounter_; i++)
+        addStudent[i] = students_[i];
+    addStudent[studentsCounter_ - 1] = student;
+    delete[] students_;
+    students_ = addStudent;
+    studentsCounter_ ++;
+
 }
 
-Lesson *Course::addLessons(const Lesson &lesson) {
-    return nullptr;
+void Course::addLessons(const Lesson &lesson) {
+
+    auto* addLesson = new Lesson[lessonsCounter_];
+    for (int i = 0; i < lessonsCounter_; i++)
+        addLesson[i] = lessons_[i];
+    addLesson[lessonsCounter_ - 1] = lesson;
+    delete[] lessons_;
+    lessons_ = addLesson;
+    lessonsCounter_ ++;
+
 }
 
 void Course::SeatsController(const Course &course) const {
 
+    for (int i = 0; i < lessonsCounter_; i++)
+        assert(this->lessons_[i].getClassroom()->getSeats() >= studentsCounter_);
+
 }
 
-void Course::NoOverlapController(const Course &course) const {
 
-}
+

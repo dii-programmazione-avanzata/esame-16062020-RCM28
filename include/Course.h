@@ -11,7 +11,7 @@ using namespace std;
 
 class User {
 
-private:
+protected:
 
     string name_;
     string surname_;
@@ -19,9 +19,9 @@ private:
 
 public:
 
-    string getName() { return name_; } const;
-    string getSurname() { return surname_; } const;
-    int getNumber() { return number_; } const;
+    string getName() const { return name_; };
+    string getSurname() const { return surname_; };
+    int getNumber() const { return number_; };
 
 };
 
@@ -34,14 +34,14 @@ class Date {
 private:
 
     int day_;
-    string month_;
+    int month_;
     int year_;
 
 public:
 
-    int getDay() { return day_; } const;
-    string getMonth() { return month_; } const;
-    int getYear() { return year_; } const;
+    int getDay() const { return day_; };
+    int getMonth() const { return month_; };
+    int getYear() const { return year_; };
     string printDate() const;
 
 };
@@ -55,8 +55,8 @@ private:
 
 public:
 
-    int getHour() { return hour_; } const;
-    int getMinutes() { return minutes_; } const;
+    int getHour() const { return hour_; };
+    int getMinutes() const { return minutes_; };
     string printHour() const;
 
 };
@@ -70,8 +70,8 @@ private:
 
 public:
 
-    string getID() { return ID_; } const;
-    int getSeats() { return seats_; } const;
+    string getID() const { return ID_; };
+    int getSeats() const { return seats_; };
 
 };
 
@@ -86,10 +86,10 @@ private:
 
 public:
 
-    Date* getDate() { return date_; } const;
-    Hour* getStart() { return start_; } const;
-    Hour* getDuration() { return duration_; } const;
-    Classroom* getClassroom() { return classroom_; } const;
+    Date* getDate() const { return date_; };
+    Hour* getStart() const { return start_; };
+    Hour* getDuration() const { return duration_; };
+    Classroom* getClassroom() const { return classroom_; };
 
 };
 
@@ -98,22 +98,24 @@ class Course {
 private:
 
     Professor* professors_;
+    int professorsCounter_ = 1;
     int year_;
-    int studentsCounter_;
+    int studentsCounter_ = 1;
     Student* students_;
     Lesson* lessons_;
+    int lessonsCounter_ = 1;
 
 public:
 
-    Professor* addProfessors( const Professor &professor);
-    Student* addStudents( const Student &student);
-    Lesson* addLessons( const Lesson &lesson);
-    Professor* getProfessors() { return professors_; } const;
-    Student* getStudents() { return students_; } const;
-    int getYear() { return year_; } const;
-    Lesson* getLessons() { return lessons_;} const;
+    void addProfessors( const Professor &professor);
+    void addStudents( const Student &student);
+    void addLessons( const Lesson &lesson);
+    Professor* getProfessors() const { return professors_; };
+    int getProfessorsCounter() const { return professorsCounter_;};
+    Student* getStudents() const { return students_; };
+    int getYear() const { return year_; };
+    Lesson* getLessons() const { return lessons_;};
     void SeatsController( const Course &course) const;
-    void NoOverlapController( const Course &course) const;
 
 };
 
