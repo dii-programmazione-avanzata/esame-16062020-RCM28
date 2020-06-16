@@ -115,6 +115,7 @@ public:
     Student* getStudents() const { return students_; };
     int getYear() const { return year_; };
     Lesson* getLessons() const { return lessons_;};
+    int getLessonsCounter() const { return lessonsCounter_; };
     void SeatsController( const Course &course) const;
 
 };

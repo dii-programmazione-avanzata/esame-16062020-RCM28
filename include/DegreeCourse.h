@@ -25,7 +25,7 @@ public:
     Professor* ProfessorFinderByCourse( const Course &course) const;
     Classroom* ClassroomFinderByCourse( const Course &course) const;
     string FullCoursesOverview( const DegreeCourse &degree) const;
-    void NoOverlapController( const Course &course) const;
+    void NoOverlapController( const DegreeCourse &degree, int year) const;
 };
 
 
